@@ -687,11 +687,10 @@ h1, h2, h3 { font-weight: 400; letter-spacing: 0.02em; }
 .ww-item p { color: var(--text-dim); font-size: 14px; }
 
 /* === TIMELINE === */
-/* === TIMELINE === */
 .timeline {
     margin: 60px auto 0;
     position: relative;
-    max-width: 640px;
+    max-width: 680px;
 }
 .timeline::before {
     content: '';
@@ -703,39 +702,38 @@ h1, h2, h3 { font-weight: 400; letter-spacing: 0.02em; }
     background: linear-gradient(180deg, transparent, var(--gold), transparent);
     transform: translateX(-50%);
 }
+
 .tl-item {
-    display: grid;
-    grid-template-columns: 1fr 20px 1fr;
+    display: flex;
     align-items: center;
-    gap: 32px;
     margin-bottom: 50px;
-    position: relative;
+    gap: 24px;
 }
 .tl-item:last-child { margin-bottom: 0; }
 
-/* Нечётные: время слева, текст справа */
-.tl-item:nth-child(odd) .tl-time {
-    grid-column: 1;
-    text-align: right;
+.tl-side {
+    flex: 1;
+    min-width: 0;
 }
-.tl-item:nth-child(odd) .tl-text {
-    grid-column: 3;
-    text-align: left;
-}
+.tl-left .tl-time   { text-align: right; }
+.tl-left .tl-text   { text-align: left; }
+.tl-right .tl-text  { text-align: right; }
+.tl-right .tl-time  { text-align: left; }
 
-/* Чётные: текст слева, время справа */
-.tl-item:nth-child(even) .tl-time {
-    grid-column: 3;
-    text-align: left;
+.tl-time {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    color: var(--gold);
+    line-height: 1.4;
 }
-.tl-item:nth-child(even) .tl-text {
-    grid-column: 1;
-    text-align: right;
+.tl-text {
+    font-size: 15px;
+    color: var(--text);
+    line-height: 1.6;
 }
 
 .tl-dot {
-    grid-column: 2;
-    justify-self: center;
+    flex: 0 0 14px;
     width: 14px;
     height: 14px;
     border-radius: 50%;
@@ -743,17 +741,6 @@ h1, h2, h3 { font-weight: 400; letter-spacing: 0.02em; }
     box-shadow: 0 0 0 4px rgba(201, 169, 74, 0.2);
     z-index: 1;
     animation: dotPulse 2.5s ease-in-out infinite;
-}
-
-.tl-time {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 20px;
-    color: var(--gold);
-}
-.tl-text {
-    font-size: 15px;
-    color: var(--text);
-    line-height: 1.6;
 }
 
 @keyframes dotPulse {
@@ -917,35 +904,64 @@ h1, h2, h3 { font-weight: 400; letter-spacing: 0.02em; }
 }
 
 /* === MOBILE === */
-@media (max-width: 600px) {
-    .section { padding: 90px 20px; }
-    .parallax { background-attachment: scroll; }
+/* === TIMELINE === */
+.timeline {
+    margin: 60px auto 0;
+    position: relative;
+    max-width: 680px;
+}
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 10px;
+    bottom: 10px;
+    width: 1px;
+    background: linear-gradient(180deg, transparent, var(--gold), transparent);
+    transform: translateX(-50%);
+}
 
-    .timeline::before { left: 20px; }
-    .tl-item {
-        grid-template-columns: 40px 1fr;
-        gap: 16px;
-        text-align: left;
-    }
-    .tl-item:nth-child(odd) .tl-time,
-    .tl-item:nth-child(even) .tl-time {
-        grid-column: 2;
-        grid-row: 1;
-        text-align: left;
-        font-size: 16px;
-    }
-    .tl-item:nth-child(odd) .tl-text,
-    .tl-item:nth-child(even) .tl-text {
-        grid-column: 2;
-        grid-row: 2;
-        text-align: left;
-    }
-    .tl-dot {
-        grid-column: 1;
-        grid-row: 1 / span 2;
-        justify-self: start;
-        margin-left: 13px;
-    }
+.tl-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 50px;
+    gap: 24px;
+}
+.tl-item:last-child { margin-bottom: 0; }
 
-    .glow { filter: blur(80px); }
+.tl-side {
+    flex: 1;
+    min-width: 0;
+}
+.tl-left .tl-time   { text-align: right; }
+.tl-left .tl-text   { text-align: left; }
+.tl-right .tl-text  { text-align: right; }
+.tl-right .tl-time  { text-align: left; }
+
+.tl-time {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    color: var(--gold);
+    line-height: 1.4;
+}
+.tl-text {
+    font-size: 15px;
+    color: var(--text);
+    line-height: 1.6;
+}
+
+.tl-dot {
+    flex: 0 0 14px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--gold);
+    box-shadow: 0 0 0 4px rgba(201, 169, 74, 0.2);
+    z-index: 1;
+    animation: dotPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes dotPulse {
+    0%, 100% { box-shadow: 0 0 0 4px rgba(201, 169, 74, 0.2); }
+    50%      { box-shadow: 0 0 0 10px rgba(201, 169, 74, 0); }
 }
