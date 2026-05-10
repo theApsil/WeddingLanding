@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8" />
@@ -5,28 +6,56 @@
     <title>Данил и Полина — 17 октября 2026</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Cormorant+Unicase:wght@400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Pinyon+Script&family=Great+Vibes&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+<body class="locked">
+</head">
+<!-- ПРЕЛОАДЕР -->
+<div id="preloader" class="preloader">
+    <div class="preloader-bg"></div>
+    <div class="preloader-content">
+        <div class="pre-ornament">✦</div>
+        <p class="pre-pretitle">Приглашение на свадьбу</p>
+        <h1 class="pre-names">Данил <span class="amp-script">&amp;</span> Полина</h1>
+        <p class="pre-date">17 · 10 · 2026</p>
+        <p class="pre-text">Нажмите на кнопку, чтобы<br>погрузиться в атмосферу нашего торжества</p>
+        <button id="enter-btn" class="enter-btn pulse">
+            <span>Открыть приглашение</span>
+        </button>
+        <p class="pre-hint">♪ с музыкой будет атмосфернее</p>
+    </div>
+    <!-- частицы -->
+    <div class="particles" id="particles"></div>
+</div>
 
 <!-- Кнопка звука -->
 <button id="sound-toggle" class="sound-toggle" aria-label="Включить музыку">
-    <svg id="icon-play" viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
-    <svg id="icon-pause" viewBox="0 0 24 24" width="22" height="22" style="display:none"><path fill="currentColor" d="M6 5h4v14H6zm8 0h4v14h-4z"/></svg>
+    <svg id="icon-play" viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
+    <svg id="icon-pause" viewBox="0 0 24 24" width="20" height="20" style="display:none"><path fill="currentColor" d="M6 5h4v14H6zm8 0h4v14h-4z"/></svg>
 </button>
 <audio id="bg-music" loop preload="auto" src="assets/music.mp3"></audio>
+
+<!-- Глобальные декоративные слои -->
+<div class="grain"></div>
+<div class="glow glow-1"></div>
+<div class="glow glow-2"></div>
+<div class="glow glow-3"></div>
 
 <!-- HERO -->
 <section class="hero" id="hero">
     <div class="hero-bg" style="background-image:url('assets/image1.png')"></div>
     <div class="hero-overlay"></div>
+    <div class="hero-particles" id="hero-particles"></div>
     <div class="hero-content">
-        <p class="hero-pre fade-in">Свадьба</p>
-        <h1 class="hero-names fade-in">Данил <span class="amp">&</span> Полина</h1>
-        <p class="hero-date fade-in">17 октября 2026</p>
+        <p class="hero-pre word-reveal">Свадьба</p>
+        <h1 class="hero-names">
+            <span class="word-reveal">Данил</span>
+            <span class="amp-script word-reveal">&amp;</span>
+            <span class="word-reveal">Полина</span>
+        </h1>
+        <p class="hero-date word-reveal">17 октября 2026</p>
 
-        <div class="countdown fade-in" id="countdown">
+        <div class="countdown word-reveal" id="countdown">
             <div class="cd-item"><span id="cd-days">--</span><small>дней</small></div>
             <div class="cd-item"><span id="cd-hours">--</span><small>часов</small></div>
             <div class="cd-item"><span id="cd-minutes">--</span><small>минут</small></div>
@@ -64,7 +93,7 @@
         </div>
         <div class="ww-item">
             <div class="ww-icon">❖</div>
-            <h3>Море Холл & Море Гранд</h3>
+            <h3>Море Холл &amp; Море Гранд</h3>
             <p>Панорамный шатёр на пирсе<br>с трёх сторон — море</p>
         </div>
     </div>
@@ -105,7 +134,7 @@
         Для гостей предусмотрена парковка на 50 машин.
     </p>
     <div class="map-buttons">
-        <a class="btn" href="https://2gis.ru/vladivostok/geo/70000001035623987" target="_blank" rel="noopener">Открыть в 2ГИС</a>
+        <a class="btn pulse-soft" href="https://2gis.ru/vladivostok/geo/70000001035623987" target="_blank" rel="noopener">Открыть в 2ГИС</a>
         <a class="btn btn-outline" href="https://yandex.ru/maps/org/more_kholl_i_more_grand/163650326172" target="_blank" rel="noopener">Открыть в Яндекс.Картах</a>
     </div>
 </section>
@@ -118,11 +147,11 @@
         <strong>оливковые и золотые оттенки</strong>.
     </p>
     <div class="palette">
-        <span class="sw" style="background:#3b4a2a" title="Тёмная олива"></span>
-        <span class="sw" style="background:#6b7a3a" title="Олива"></span>
-        <span class="sw" style="background:#a89b6a" title="Светлая олива"></span>
-        <span class="sw" style="background:#c9a94a" title="Золото"></span>
-        <span class="sw" style="background:#e8d8a8" title="Шампань"></span>
+        <span class="sw" style="background:#3b4a2a"></span>
+        <span class="sw" style="background:#6b7a3a"></span>
+        <span class="sw" style="background:#a89b6a"></span>
+        <span class="sw" style="background:#c9a94a"></span>
+        <span class="sw" style="background:#e8d8a8"></span>
     </div>
     <p class="section-text small-note">
         Для мужчин также уместен классический вариант: белый верх и тёмный низ.
@@ -136,7 +165,7 @@
         <div class="wish-card">
             <div class="wish-icon">✿</div>
             <h3>Без цветов, пожалуйста</h3>
-            <p>К сожалению, букеты быстро увядают и не доедут с нами до дома. Будем благодарны, если вы откажетесь от цветов.</p>
+            <p>Букеты быстро увядают и не доедут с нами до дома. Будем благодарны, если вы откажетесь от цветов.</p>
         </div>
         <div class="wish-card">
             <div class="wish-icon">✦</div>
@@ -153,13 +182,13 @@
         Пожалуйста, сообщите о вашем решении до <strong>1 сентября 2026</strong>,
         чтобы мы могли всё подготовить наилучшим образом.
     </p>
-    <a class="btn btn-gold" href="#" id="rsvp-link" target="_blank" rel="noopener">Заполнить форму</a>
+    <a class="btn btn-gold pulse" href="#" id="rsvp-link" target="_blank" rel="noopener">Заполнить форму</a>
     <p class="small-note">* ссылка на Google Forms будет добавлена позже</p>
 </section>
 
 <!-- ФУТЕР -->
 <footer class="footer">
-    <div class="amp big">D &amp; P</div>
+    <div class="amp-script big">D &amp; P</div>
     <p>17 · 10 · 2026</p>
     <p class="footer-note">С любовью, Данил и Полина</p>
 </footer>
