@@ -1,23 +1,88 @@
-const targetDate = new Date('2026-10-17T16:00:00+10:00').getTime(); // Владивосток UTC+10
+// === PARTICLES ===
+function spawnParticles(container, count = 25) {
+    for (let i = 0; i < count; i++) {
+        const p = document.createElement('div');
+        p.className = 'particle';
+        const size = Math.random() * 3 + 1;
+        p.style.width = p.style.height = size + 'px';
+        p.style.left = Math.random() * 100 + '%';
+        p.style.bottom = -Math.random() * 100 + 'px';
+        p.style.animationDuration = (12 + Math.random() * 18) + 's';
+        p.style.animationDelay = -Math.random() * 20 + 's';
+        p.style.opacity = (0.3 + Math.random() * 0.5).toString();
+        container.appendChild(p);
+    }
+}
+spawnParticles(document.getElementById('particles'), 30);
+spawnParticles(document.getElementById('hero-particles'), 35);
+
+// === PRELOADER ===
+const preloader = document.getElementById('preloader');
+const enterBtn = document.getElementById('enter-btn');
+const audio = document.getElementById('bg-music');
+const soundBtn = document.getElementById('sound-toggle');
+const iconPlay = document.getElementById('icon-play');
+const iconPause = document.getElementById('icon-pause');
+
+audio.volume = 0;
+
+enterBtn.addEventListener('click', () => {
+    // музыка с плавным fade-in
+    audio.play().then(() => {
+        iconPlay.style.display = 'none';
+        iconPause.style.display = 'block';
+        let v = 0;
+        const fade = setInterval(() => {
+            v += 0.03;
+            if (v >= 0.4) { v = 0.4; clearInterval(fade); }
+            audio.volume = v;
+        }, 80);
+    }).catch(()=>{});
+
+    preloader.classList.add('hidden');
+    document.body.classList.remove('locked');
+    soundBtn.classList.add('visible');
+
+    // Запускаем word-reveal в hero с задержкой
+    setTimeout(() => {
+        document.querySelectorAll('.hero .word-reveal').forEach((el, i) => {
+            setTimeout(() => el.classList.add('visible'), i * 220);
+        });
+    }, 600);
+});
+
+// === SOUND TOGGLE ===
+soundBtn.addEventListener('click', () => {
+    if (audio.paused) {
+        audio.play();
+        audio.volume = 0.4;
+        iconPlay.style.display = 'none';
+        iconPause.style.display = 'block';
+    } else {
+        audio.pause();
+        iconPlay.style.display = 'block';
+        iconPause.style.display = 'none';
+    }
+});
+
+// === COUNTDOWN ===
+const targetDate = new Date('2026-10-17T16:00:00+10:00').getTime();
 
 function updateCountdown() {
-    const now = Date.now();
-    const diff = targetDate - now;
-
+    const diff = targetDate - Date.now();
     if (diff <= 0) {
         document.getElementById('countdown').innerHTML =
-            '<div style="font-family:Cormorant Garamond,serif;font-size:28px;color:var(--gold)">Сегодня наш день ✦</div>';
+            '<div style="font-family:Pinyon Script,cursive;font-size:42px;color:var(--gold)">Сегодня наш день ✦</div>';
         return;
     }
-    const days = Math.floor(diff / 86400000);
-    const hours = Math.floor((diff % 86400000) / 3600000);
-    const minutes = Math.floor((diff % 3600000) / 60000);
-    const seconds = Math.floor((diff % 60000) / 1000);
-
-    document.getElementById('cd-days').textContent = days;
-    document.getElementById('cd-hours').textContent = String(hours).padStart(2,'0');
-    document.getElementById('cd-minutes').textContent = String(minutes).padStart(2,'0');
-    document.getElementById('cd-seconds').textContent = String(seconds).padStart(2,'0');
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    document.getElementById('cd-days').textContent = d;
+    document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
+    document.getElementById('cd-minutes').textContent = String(m).padStart(2,'0');
+    document.getElementById('cd-seconds').textContent = String(s).padStart(2,'0');
 }
 updateCountdown();
 setInterval(updateCountdown, 1000);
@@ -31,8 +96,7 @@ const observer = new IntersectionObserver((entries) => {
         }
     });
 }, { threshold: 0.15 });
-
-document.querySelectorAll('.reveal, .fade-in').forEach(el => observer.observe(el));
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
 // === HERO PARALLAX ===
 const heroBg = document.querySelector('.hero-bg');
@@ -42,36 +106,6 @@ window.addEventListener('scroll', () => {
         heroBg.style.transform = `translateY(${y * 0.4}px) scale(1.05)`;
     }
 }, { passive: true });
-
-const audio = document.getElementById('bg-music');
-const btn = document.getElementById('sound-toggle');
-const iconPlay = document.getElementById('icon-play');
-const iconPause = document.getElementById('icon-pause');
-audio.volume = 0.4;
-
-btn.addEventListener('click', () => {
-    if (audio.paused) {
-        audio.play().then(() => {
-            iconPlay.style.display = 'none';
-            iconPause.style.display = 'block';
-        }).catch(err => console.warn('Не удалось запустить музыку:', err));
-    } else {
-        audio.pause();
-        iconPlay.style.display = 'block';
-        iconPause.style.display = 'none';
-    }
-});
-
-const tryAutoPlay = () => {
-    audio.play().then(() => {
-        iconPlay.style.display = 'none';
-        iconPause.style.display = 'block';
-    }).catch(()=>{});
-    document.removeEventListener('click', tryAutoPlay);
-    document.removeEventListener('scroll', tryAutoPlay);
-};
-document.addEventListener('click', tryAutoPlay, { once: true });
-document.addEventListener('scroll', tryAutoPlay, { once: true });
 
 // === RSVP заглушка ===
 document.getElementById('rsvp-link').addEventListener('click', (e) => {
