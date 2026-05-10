@@ -1,0 +1,169 @@
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Данил и Полина — 17 октября 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Cormorant+Unicase:wght@400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Кнопка звука -->
+<button id="sound-toggle" class="sound-toggle" aria-label="Включить музыку">
+    <svg id="icon-play" viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
+    <svg id="icon-pause" viewBox="0 0 24 24" width="22" height="22" style="display:none"><path fill="currentColor" d="M6 5h4v14H6zm8 0h4v14h-4z"/></svg>
+</button>
+<audio id="bg-music" loop preload="auto" src="assets/music.mp3"></audio>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+    <div class="hero-bg" style="background-image:url('assets/image1.png')"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <p class="hero-pre fade-in">Свадьба</p>
+        <h1 class="hero-names fade-in">Данил <span class="amp">&</span> Полина</h1>
+        <p class="hero-date fade-in">17 октября 2026</p>
+
+        <div class="countdown fade-in" id="countdown">
+            <div class="cd-item"><span id="cd-days">--</span><small>дней</small></div>
+            <div class="cd-item"><span id="cd-hours">--</span><small>часов</small></div>
+            <div class="cd-item"><span id="cd-minutes">--</span><small>минут</small></div>
+            <div class="cd-item"><span id="cd-seconds">--</span><small>секунд</small></div>
+        </div>
+    </div>
+    <div class="scroll-hint">⌄</div>
+</section>
+
+<!-- ПРИГЛАШЕНИЕ -->
+<section class="section invite reveal">
+    <h2 class="section-title">Дорогие близкие!</h2>
+    <p class="section-text">
+        С трепетом и волнением приглашаем вас разделить с нами один из самых важных дней нашей жизни.
+        В этот день у моря мы скажем друг другу «да» — и будем счастливы видеть рядом тех, кто нам дорог.
+    </p>
+</section>
+
+<!-- ПАРАЛЛАКС -->
+<section class="parallax" style="background-image:url('assets/image2.png')">
+    <div class="parallax-overlay"></div>
+    <div class="parallax-text reveal">
+        <p>«И двое станут одним…»</p>
+    </div>
+</section>
+
+<!-- КОГДА И ГДЕ -->
+<section class="section when-where reveal">
+    <h2 class="section-title">Когда и где</h2>
+    <div class="ww-grid">
+        <div class="ww-item">
+            <div class="ww-icon">❖</div>
+            <h3>17 октября 2026</h3>
+            <p>Суббота</p>
+        </div>
+        <div class="ww-item">
+            <div class="ww-icon">❖</div>
+            <h3>Море Холл & Море Гранд</h3>
+            <p>Панорамный шатёр на пирсе<br>с трёх сторон — море</p>
+        </div>
+    </div>
+</section>
+
+<!-- ПРОГРАММА -->
+<section class="section timeline-section reveal">
+    <h2 class="section-title">Программа дня</h2>
+    <div class="timeline">
+        <div class="tl-item">
+            <div class="tl-time">15:30 — 16:00</div>
+            <div class="tl-dot"></div>
+            <div class="tl-text">Сбор гостей</div>
+        </div>
+        <div class="tl-item">
+            <div class="tl-time">16:00 — 17:00</div>
+            <div class="tl-dot"></div>
+            <div class="tl-text">Выездная регистрация<br>и фотосессия</div>
+        </div>
+        <div class="tl-item">
+            <div class="tl-time">17:00 — 21:00</div>
+            <div class="tl-dot"></div>
+            <div class="tl-text">Свадебный ужин<br>и праздничная программа</div>
+        </div>
+    </div>
+</section>
+
+<!-- ПАРАЛЛАКС 2 -->
+<section class="parallax small" style="background-image:url('assets/image3.png')">
+    <div class="parallax-overlay"></div>
+</section>
+
+<!-- ЛОКАЦИЯ -->
+<section class="section location reveal">
+    <h2 class="section-title">Как нас найти</h2>
+    <p class="section-text">
+        Праздник пройдёт в комплексе «Море Холл и Море Гранд».<br>
+        Для гостей предусмотрена парковка на 50 машин.
+    </p>
+    <div class="map-buttons">
+        <a class="btn" href="https://2gis.ru/vladivostok/geo/70000001035623987" target="_blank" rel="noopener">Открыть в 2ГИС</a>
+        <a class="btn btn-outline" href="https://yandex.ru/maps/org/more_kholl_i_more_grand/163650326172" target="_blank" rel="noopener">Открыть в Яндекс.Картах</a>
+    </div>
+</section>
+
+<!-- ДРЕСС-КОД -->
+<section class="section dresscode reveal">
+    <h2 class="section-title">Дресс-код</h2>
+    <p class="section-text">
+        Мы будем рады, если ваш образ поддержит палитру торжества —<br>
+        <strong>оливковые и золотые оттенки</strong>.
+    </p>
+    <div class="palette">
+        <span class="sw" style="background:#3b4a2a" title="Тёмная олива"></span>
+        <span class="sw" style="background:#6b7a3a" title="Олива"></span>
+        <span class="sw" style="background:#a89b6a" title="Светлая олива"></span>
+        <span class="sw" style="background:#c9a94a" title="Золото"></span>
+        <span class="sw" style="background:#e8d8a8" title="Шампань"></span>
+    </div>
+    <p class="section-text small-note">
+        Для мужчин также уместен классический вариант: белый верх и тёмный низ.
+    </p>
+</section>
+
+<!-- ПОЖЕЛАНИЯ -->
+<section class="section wishes reveal">
+    <h2 class="section-title">Несколько пожеланий</h2>
+    <div class="wish-cards">
+        <div class="wish-card">
+            <div class="wish-icon">✿</div>
+            <h3>Без цветов, пожалуйста</h3>
+            <p>К сожалению, букеты быстро увядают и не доедут с нами до дома. Будем благодарны, если вы откажетесь от цветов.</p>
+        </div>
+        <div class="wish-card">
+            <div class="wish-icon">✦</div>
+            <h3>О подарках</h3>
+            <p>Самый желанный для нас подарок — ваше присутствие. А если хочется большего, мы будем рады конверту: он поможет нам осуществить мечты, которые мы строим вместе.</p>
+        </div>
+    </div>
+</section>
+
+<!-- RSVP -->
+<section class="section rsvp reveal">
+    <h2 class="section-title">Подтверждение присутствия</h2>
+    <p class="section-text">
+        Пожалуйста, сообщите о вашем решении до <strong>1 сентября 2026</strong>,
+        чтобы мы могли всё подготовить наилучшим образом.
+    </p>
+    <a class="btn btn-gold" href="#" id="rsvp-link" target="_blank" rel="noopener">Заполнить форму</a>
+    <p class="small-note">* ссылка на Google Forms будет добавлена позже</p>
+</section>
+
+<!-- ФУТЕР -->
+<footer class="footer">
+    <div class="amp big">D &amp; P</div>
+    <p>17 · 10 · 2026</p>
+    <p class="footer-note">С любовью, Данил и Полина</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
