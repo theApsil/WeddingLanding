@@ -15,8 +15,6 @@ function spawnParticles(container, count = 25) {
 }
 spawnParticles(document.getElementById('particles'), 45);
 spawnParticles(document.getElementById('hero-particles'), 45);
-spawnParticles(document.getElementById('main-particles'), 45);
-
 
 // === PRELOADER ===
 const preloader = document.getElementById('preloader');
