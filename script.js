@@ -13,8 +13,10 @@ function spawnParticles(container, count = 25) {
         container.appendChild(p);
     }
 }
-spawnParticles(document.getElementById('particles'), 30);
-spawnParticles(document.getElementById('hero-particles'), 35);
+spawnParticles(document.getElementById('particles'), 45);
+spawnParticles(document.getElementById('hero-particles'), 45);
+spawnParticles(document.getElementById('main-particles'), 45);
+
 
 // === PRELOADER ===
 const preloader = document.getElementById('preloader');
@@ -108,7 +110,19 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 
 // === RSVP заглушка ===
-document.getElementById('rsvp-link').addEventListener('click', (e) => {
-    e.preventDefault();
-    alert('Ссылка на форму подтверждения скоро появится здесь :)');
+document.addEventListener('DOMContentLoaded', function() {
+    const rsvpLink = document.getElementById('rsvp-link');
+    const deadlineDate = new Date('2026-09-01T00:00:00+10'); // 1 сентября 2026, 00:00
+    const currentDate = new Date();
+
+    if (currentDate > deadlineDate) {
+        rsvpLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Приём ответов на форму RSVP завершён 1 сентября 2026 года. Спасибо, что были с нами!');
+        });
+
+        rsvpLink.classList.add('btn-disabled');
+        rsvpLink.style.pointerEvents = 'none';
+        rsvpLink.style.opacity = '0.6';
+    }
 });
