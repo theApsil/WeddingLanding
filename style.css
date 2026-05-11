@@ -223,11 +223,11 @@
     src: url('assets/fonts/cormorant-garamond-v21-cyrillic_cyrillic-ext_latin-700italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 @font-face {
-    font-family: 'Pinyon Script';
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Old Classic';
     font-style: normal;
     font-weight: 400;
-    font-display: swap;
-    src: url('assets/fonts/pinyon-script-v24-latin-regular.woff2') format('woff2');
+    src: url('assets/fonts/Old Classic.ttf') format('truetype'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 
 :root {
@@ -264,7 +264,7 @@ h1, h2, h3 { font-weight: 400; letter-spacing: 0.02em; }
 .pre-names,
 .parallax-text p,
 .footer .big {
-    font-family: 'Pinyon Script', cursive;
+    font-family: 'Old Classic', cursive;
     font-weight: 400;
 }
 .amp-script { color: var(--gold); margin: 0 0.1em; font-size: 1.1em; }
